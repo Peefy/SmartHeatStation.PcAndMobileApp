@@ -211,5 +211,25 @@ namespace 流量计检定上位机
                 MessageBox.Show("注册码不对！");
             }  
         }
+
+        private void 模拟修改数据ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formMainShow.模拟修改数据ToolStripMenuItem_Click(sender, e);
+        }
+
+        private void timerShowTime_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timerRenewPanelDema_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 恢复默认数据ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formMainShow.恢复默认数据ToolStripMenuItem_Click(sender, e);
+        }
     }
 }

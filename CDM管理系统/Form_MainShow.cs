@@ -4,14 +4,14 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using System.Threading;
-using Modbus;
-using System.Net;
 using SocketCom;
 using Modbus.Device;
 using System.IO.Ports;
 
 using SmartHeatStationParaInfo;
 using CCWin.SkinControl;
+using SmartHeatStation.SQLserver;
+using 流量计检定上位机.SmartHeatStation.Models;
 
 namespace 流量计检定上位机
 {
@@ -35,7 +35,14 @@ namespace 流量计检定上位机
 
         Thread UpLoadThread;
 
-        SmartHeatStation.SQLserver.ComWithSql ComWithSqlServer;
+        ComWithSql ComWithSqlServer;
+        public List<GatherData> GatherDatas { get; set; }
+        public List<StationCode> StationCodes { get; set; }
+        public List<GatherError> GatherErrors { get; set; }
+        GetParaValue getParaValue;
+
+        List<SkinGroupBox> stationGroups;
+
         #endregion
         #region 主窗体初始化
         public Form_MainShow(Form_Main formmain)
@@ -57,7 +64,6 @@ namespace 流量计检定上位机
             #region 更新文件的数据到UI
             #endregion
             Thread.Sleep(100);
-
             Stations = new List<Station>
             {
                 new Station() {Name = "阿尔滨站", 一网 = new Area() {供水压力 = new Para() {Value = "2" } } },
@@ -85,51 +91,94 @@ namespace 流量计检定上位机
                 new Station() {Name = "环保站" },
 
             };
-
-            LabelStations = new List<CCWin.SkinControl.SkinLabel>
+            LabelStations = new List<SkinLabel>
             {
-                labelStation0,
-                labelStation1,
-                labelStation2,
-                labelStation3,
-                labelStation4,
-                labelStation5,
-                labelStation6,
-                labelStation7,
-                labelStation8,
-                labelStation9,
-                labelStation10,
-                labelStation11,
-                labelStation12,
-                labelStation13,
-                labelStation14,
-                labelStation15,
-                labelStation16,
-                labelStation17,
-                labelStation18,
-                labelStation19,
+                //labelStation0,
+                //labelStation1,
+                //labelStation2,
+                //labelStation3,
+                //labelStation4,
+                //labelStation5,
+                //labelStation6,
+                //labelStation7,
+                //labelStation8,
+                //labelStation9,
+                //labelStation10,
+                //labelStation11,
+                //labelStation12,
+                //labelStation13,
+                //labelStation14,
+                //labelStation15,
+                //labelStation16,
+                //labelStation17,
+                //labelStation18,
+                //labelStation19,
             };
-
             new FileSaveSerice().LoadStationsData(Stations);
-
             timer1_Tick(null, null);
-
             Thread.Sleep(100);
             UpLoadThread = new Thread(new ThreadStart(() =>
             {
-                while (true)
-                {
-                    new FileSaveSerice().SaveStationsData(Stations);
-                    Thread.Sleep(1000);
-                    new QiniuYun.UpLoad().uploadStreamTest();
-                    Thread.Sleep(8000);
-                }
 
-            }));
+            }));            
             UpLoadThread.Start();
             timer1.Enabled = true;
             #endregion
-            ComWithSqlServer = new SmartHeatStation.SQLserver.ComWithSql();
+            #region GroupInit
+            stationGroups = new List<SkinGroupBox>()
+            {
+                stationGroup20,
+                stationGroup21,
+                stationGroup22,
+                stationGroup23,
+                stationGroup24,
+                stationGroup25,
+                stationGroup26,
+                stationGroup27,
+                stationGroup28,
+                stationGroup29,
+
+                stationGroup30,
+                stationGroup31,
+                stationGroup32,
+                stationGroup33,
+                stationGroup34,
+                stationGroup35,
+                stationGroup36,
+                stationGroup37,
+                stationGroup38,
+                stationGroup39,
+
+                stationGroup40,
+                stationGroup41,
+                stationGroup42,
+                stationGroup43,
+                stationGroup44,
+
+                stationGroup0,
+                stationGroup1,
+                stationGroup2,
+                stationGroup3,
+                stationGroup4,
+                stationGroup5,
+                stationGroup6,
+                stationGroup7,
+                stationGroup8,
+                stationGroup9,
+
+                stationGroup10,
+                stationGroup11,
+                stationGroup12,
+                stationGroup13,
+                stationGroup14,
+                stationGroup15,
+                stationGroup16,
+                stationGroup17,
+                //stationGroup18,
+                //stationGroup19,
+
+            };
+            #endregion
         }
         #endregion
         #region MenuView
@@ -147,6 +196,26 @@ namespace 流量计检定上位机
 
         #region FormEvent
 
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            ComWithSqlServer = new ComWithSql();
+            if(ComWithSqlServer.OpenDatabase() == true)
+            {
+                MessageBox.Show("连接数据库成功!!");
+                GatherDatas = new List<GatherData>();
+                StationCodes = new List<StationCode>();
+                GatherErrors = new List<GatherError>();
+                //for (int i = 0; i < 50 - 7; ++i)
+                //{
+                //    GatherDatas.Add(new GatherData());
+                //    StationCodes.Add(new StationCode());
+                //    GatherErrors.Add(new GatherError());
+                //}
+                timerGetDataFormDb.Enabled = true;
+            }
+        }
+
         private void Form_Main_Resize(object sender, EventArgs e)
         {
             MainTabControl.Width = Width - 10;
@@ -162,6 +231,11 @@ namespace 流量计检定上位机
 
         public void Form_Main_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (ComWithSqlServer != null)
+            {
+                ComWithSqlServer?.CloseDatabase();
+                ComWithSqlServer = null;
+            }
 
             if (UpLoadThread != null)
             {
@@ -377,7 +451,7 @@ namespace 流量计检定上位机
                 {
                     this.AcceptClient1Data.Start();
                 }
-                labelStatus.Text = "连接到客户端";
+
                 if (server.SendDataForClient("Jump", 1) == false)
                 {
                     server.client1 = null;
@@ -386,7 +460,9 @@ namespace 流量计检定上位机
                     
             }
             else
-                labelStatus.Text = "没有客户端连接";
+            {
+
+            }
         }
 
         #endregion
@@ -429,33 +505,101 @@ namespace 流量计检定上位机
 
         public void timer1_Tick(object sender, EventArgs e)
         {
-            for(int i = 0;i<20 ;++i)
+            for(int i = 0;i<43 ;++i)
             {
-                if(Stations[i].IsError == true)
-                {
-                    LabelStations[i].Text = "故障";
-                    LabelStations[i].BackColor = Color.Red;
-                }
-                else
-                {
-                    if(Stations[i].IsNormal == true)
-                    {
-                        LabelStations[i].Text = "正常";
-                        LabelStations[i].BackColor = Color.Lime;
-                    }
-                    else
-                    {
-                        LabelStations[i].Text = "报警";
-                        LabelStations[i].BackColor = Color.Yellow;
-                    }
-                }
+                //if(Stations[i].IsError == true)
+                //{
+                //    LabelStations[i].Text = "故障";
+                //    LabelStations[i].BackColor = Color.Red;
+                //}
+                //else
+                //{
+                //    if(Stations[i].IsNormal == true)
+                //    {
+                //        LabelStations[i].Text = "正常";
+                //        LabelStations[i].BackColor = Color.Lime;
+                //    }
+                //    else
+                //    {
+                //        LabelStations[i].Text = "报警";
+                //        LabelStations[i].BackColor = Color.Yellow;
+                //    }
+                //}
             }
         }
 
         private void skinButton1_Click_1(object sender, EventArgs e)
         {
             var btn = sender as SkinButton;
-            btn.Text =  ComWithSqlServer.FindData();
+        }
+
+        public void 模拟修改数据ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(ComWithSqlServer.ChangeData() == true)
+            {
+                MessageBox.Show("修改数据成功！");
+            }
+
+        }
+
+        public void 恢复默认数据ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ComWithSqlServer.RenewData() == true)
+            {
+                MessageBox.Show("恢复数据成功！");
+            }
+        }
+
+        private void timerGetDataFormDb_Tick(object sender, EventArgs e)
+        {
+            ComWithSqlServer.FindGatherData(GatherDatas);
+            ComWithSqlServer.FindGatherErrors(GatherErrors);
+            ComWithSqlServer.FindStationCode(StationCodes);
+            for(int i = 0;i<GatherDatas.Count ;++i)
+            {
+                getParaValue = new GetParaValue(
+                    StationCodes[i].Dictionary,
+                    GatherDatas[i].Dictionary,
+                    GatherErrors[i].Dictionary
+                    );
+                stationGroups[i].Text = getParaValue.StationName;
+                var labelAlarm = stationGroups[i].Controls[3] as SkinLabel;
+                var labelError = stationGroups[i].Controls[2] as SkinLabel;
+                if (getParaValue.AlarmSign == false && getParaValue.ErrorSign == false)
+                {
+                    labelAlarm.Text = "正常";
+                    labelAlarm.BackColor = Color.Lime;
+                    labelError.Visible = false;
+                    labelAlarm.Visible = true;
+                    continue;
+                }
+                if(getParaValue.AlarmSign == false)
+                {
+                    labelAlarm.Text = "--";
+                    labelAlarm.BackColor = Color.Gray;
+                    labelAlarm.Visible = false;
+                }
+                else 
+                {
+                    labelAlarm.Text = "报警";
+                    labelAlarm.BackColor = Color.Yellow;
+                    labelAlarm.Visible = true;
+                }
+
+                if(getParaValue.ErrorSign == false)
+                {
+                    labelError.Visible = false;
+                    labelError.Text = "--";
+                    labelError.BackColor = Color.Gray;
+                }
+                else 
+                {
+                    labelError.Visible = true;
+                    labelError.Text = "故障";
+                    labelError.BackColor = Color.Red;
+                }
+            }
+
         }
     }
 }

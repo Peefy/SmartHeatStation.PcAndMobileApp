@@ -71,6 +71,8 @@
             this.btnRegister = new CCWin.SkinControl.SkinButton();
             this.labelRegister = new CCWin.SkinControl.SkinTextBox();
             this.skinLabel1 = new CCWin.SkinControl.SkinLabel();
+            this.模拟修改数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.恢复默认数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.MenuShowDemarcate.SuspendLayout();
@@ -170,7 +172,7 @@
             this.保存数据ToolStripMenuItem.BackColor = System.Drawing.Color.DarkGray;
             this.保存数据ToolStripMenuItem.Image = global::流量计检定上位机.Properties.Resources.save;
             this.保存数据ToolStripMenuItem.Name = "保存数据ToolStripMenuItem";
-            this.保存数据ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.保存数据ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.保存数据ToolStripMenuItem.Text = "保存数据";
             this.保存数据ToolStripMenuItem.Click += new System.EventHandler(this.保存数据ToolStripMenuItem_Click);
             // 
@@ -179,7 +181,7 @@
             this.查询数据ToolStripMenuItem.BackColor = System.Drawing.Color.DarkGray;
             this.查询数据ToolStripMenuItem.Image = global::流量计检定上位机.Properties.Resources.find;
             this.查询数据ToolStripMenuItem.Name = "查询数据ToolStripMenuItem";
-            this.查询数据ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.查询数据ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.查询数据ToolStripMenuItem.Text = "查询数据";
             this.查询数据ToolStripMenuItem.Click += new System.EventHandler(this.查询数据ToolStripMenuItem_Click);
             // 
@@ -198,12 +200,15 @@
             this.toolBarToolStripMenuItem.CheckOnClick = true;
             this.toolBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.toolBarToolStripMenuItem.Name = "toolBarToolStripMenuItem";
-            this.toolBarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.toolBarToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.toolBarToolStripMenuItem.Text = "工具栏(&T)";
             this.toolBarToolStripMenuItem.Click += new System.EventHandler(this.ToolBarToolStripMenuItem_Click);
             // 
             // toolsMenu
             // 
+            this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.模拟修改数据ToolStripMenuItem,
+            this.恢复默认数据ToolStripMenuItem});
             this.toolsMenu.Name = "toolsMenu";
             this.toolsMenu.Size = new System.Drawing.Size(59, 21);
             this.toolsMenu.Text = "参数(&P)";
@@ -220,7 +225,7 @@
             // 
             this.RegisterMenuItem.BackColor = System.Drawing.Color.DarkGray;
             this.RegisterMenuItem.Name = "RegisterMenuItem";
-            this.RegisterMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.RegisterMenuItem.Size = new System.Drawing.Size(124, 22);
             this.RegisterMenuItem.Text = "使用说明";
             this.RegisterMenuItem.Click += new System.EventHandler(this.RegisterMenuItem_Click);
             // 
@@ -328,6 +333,7 @@
             // 
             this.timerShowTime.Enabled = true;
             this.timerShowTime.Interval = 1000;
+            this.timerShowTime.Tick += new System.EventHandler(this.timerShowTime_Tick);
             // 
             // printDialog
             // 
@@ -370,6 +376,7 @@
             // timerRenewPanelDema
             // 
             this.timerRenewPanelDema.Interval = 2000;
+            this.timerRenewPanelDema.Tick += new System.EventHandler(this.timerRenewPanelDema_Tick);
             // 
             // panelRegister
             // 
@@ -452,6 +459,22 @@
             this.skinLabel1.TabIndex = 0;
             this.skinLabel1.Text = "请输入注册码注册";
             // 
+            // 模拟修改数据ToolStripMenuItem
+            // 
+            this.模拟修改数据ToolStripMenuItem.BackColor = System.Drawing.Color.DarkGray;
+            this.模拟修改数据ToolStripMenuItem.Name = "模拟修改数据ToolStripMenuItem";
+            this.模拟修改数据ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.模拟修改数据ToolStripMenuItem.Text = "模拟修改数据";
+            this.模拟修改数据ToolStripMenuItem.Click += new System.EventHandler(this.模拟修改数据ToolStripMenuItem_Click);
+            // 
+            // 恢复默认数据ToolStripMenuItem
+            // 
+            this.恢复默认数据ToolStripMenuItem.BackColor = System.Drawing.Color.DarkGray;
+            this.恢复默认数据ToolStripMenuItem.Name = "恢复默认数据ToolStripMenuItem";
+            this.恢复默认数据ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.恢复默认数据ToolStripMenuItem.Text = "恢复默认数据";
+            this.恢复默认数据ToolStripMenuItem.Click += new System.EventHandler(this.恢复默认数据ToolStripMenuItem_Click);
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -532,6 +555,8 @@
         private CCWin.SkinControl.SkinLabel skinLabel1;
         private System.Windows.Forms.ToolStripMenuItem helpMenu;
         private System.Windows.Forms.ToolStripMenuItem RegisterMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 模拟修改数据ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 恢复默认数据ToolStripMenuItem;
     }
 }
 

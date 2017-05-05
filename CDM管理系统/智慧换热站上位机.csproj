@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>流量计检定上位机</RootNamespace>
     <AssemblyName>流量计检定上位机</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>icon.ico</ApplicationIcon>
@@ -101,9 +103,13 @@
     <Compile Include="SmartHeatStation\Helper\TimeHelper.cs" />
     <Compile Include="SmartHeatStation\Models\AdjustVar.cs" />
     <Compile Include="SmartHeatStation\Models\Area.cs" />
+    <Compile Include="SmartHeatStation\Models\NewModels\GetParaValue.cs" />
+    <Compile Include="SmartHeatStation\Models\NewModels\GatherData.cs" />
+    <Compile Include="SmartHeatStation\Models\NewModels\GatherError.cs" />
     <Compile Include="SmartHeatStation\Models\Para.cs" />
     <Compile Include="SmartHeatStation\Models\Pump.cs" />
     <Compile Include="SmartHeatStation\Models\Station.cs" />
+    <Compile Include="SmartHeatStation\Models\NewModels\StationCode.cs" />
     <Compile Include="SmartHeatStation\Models\WaterBox.cs" />
     <Compile Include="SmartHeatStation\Models\WaterVar.cs" />
     <Compile Include="SmartHeatStation\Modbus\DownLoad.cs" />
