@@ -456,7 +456,7 @@
             this.MainTabControl.PageHover = ((System.Drawing.Image)(resources.GetObject("MainTabControl.PageHover")));
             this.MainTabControl.PageImagePosition = CCWin.SkinControl.SkinTabControl.ePageImagePosition.Left;
             this.MainTabControl.PageNorml = null;
-            this.MainTabControl.SelectedIndex = 0;
+            this.MainTabControl.SelectedIndex = 1;
             this.MainTabControl.Size = new System.Drawing.Size(1269, 641);
             this.MainTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.MainTabControl.TabIndex = 31;
@@ -2796,6 +2796,7 @@
             this.skinButton40.Tag = "16";
             this.skinButton40.Text = "详情";
             this.skinButton40.UseVisualStyleBackColor = false;
+            this.skinButton40.Click += new System.EventHandler(this.skinButton3_Click);
             // 
             // skinLabel115
             // 
@@ -2884,6 +2885,7 @@
             this.skinButton35.Tag = "16";
             this.skinButton35.Text = "详情";
             this.skinButton35.UseVisualStyleBackColor = false;
+            this.skinButton35.Click += new System.EventHandler(this.skinButton3_Click);
             // 
             // skinLabel100
             // 
@@ -2972,6 +2974,7 @@
             this.skinButton30.Tag = "16";
             this.skinButton30.Text = "详情";
             this.skinButton30.UseVisualStyleBackColor = false;
+            this.skinButton30.Click += new System.EventHandler(this.skinButton3_Click);
             // 
             // skinLabel85
             // 
@@ -3060,6 +3063,7 @@
             this.skinButton16.Tag = "16";
             this.skinButton16.Text = "详情";
             this.skinButton16.UseVisualStyleBackColor = false;
+            this.skinButton16.Click += new System.EventHandler(this.skinButton3_Click);
             // 
             // skinLabel53
             // 
@@ -3148,6 +3152,7 @@
             this.skinButton39.Tag = "15";
             this.skinButton39.Text = "详情";
             this.skinButton39.UseVisualStyleBackColor = false;
+            this.skinButton39.Click += new System.EventHandler(this.skinButton3_Click);
             // 
             // skinLabel112
             // 
@@ -3236,6 +3241,7 @@
             this.skinButton34.Tag = "15";
             this.skinButton34.Text = "详情";
             this.skinButton34.UseVisualStyleBackColor = false;
+            this.skinButton34.Click += new System.EventHandler(this.skinButton3_Click);
             // 
             // skinLabel97
             // 
@@ -3324,6 +3330,7 @@
             this.skinButton33.Tag = "19";
             this.skinButton33.Text = "详情";
             this.skinButton33.UseVisualStyleBackColor = false;
+            this.skinButton33.Click += new System.EventHandler(this.skinButton3_Click);
             // 
             // skinLabel94
             // 
@@ -3412,6 +3419,7 @@
             this.skinButton29.Tag = "15";
             this.skinButton29.Text = "详情";
             this.skinButton29.UseVisualStyleBackColor = false;
+            this.skinButton29.Click += new System.EventHandler(this.skinButton3_Click);
             // 
             // skinLabel82
             // 
@@ -3500,6 +3508,7 @@
             this.skinButton28.Tag = "19";
             this.skinButton28.Text = "详情";
             this.skinButton28.UseVisualStyleBackColor = false;
+            this.skinButton28.Click += new System.EventHandler(this.skinButton3_Click);
             // 
             // skinLabel79
             // 
@@ -3588,6 +3597,7 @@
             this.skinButton32.Tag = "18";
             this.skinButton32.Text = "详情";
             this.skinButton32.UseVisualStyleBackColor = false;
+            this.skinButton32.Click += new System.EventHandler(this.skinButton3_Click);
             // 
             // skinLabel91
             // 
@@ -3676,6 +3686,7 @@
             this.skinButton17.Tag = "15";
             this.skinButton17.Text = "详情";
             this.skinButton17.UseVisualStyleBackColor = false;
+            this.skinButton17.Click += new System.EventHandler(this.skinButton3_Click);
             // 
             // skinLabel56
             // 
@@ -3764,6 +3775,7 @@
             this.skinButton36.Tag = "17";
             this.skinButton36.Text = "详情";
             this.skinButton36.UseVisualStyleBackColor = false;
+            this.skinButton36.Click += new System.EventHandler(this.skinButton3_Click);
             // 
             // skinLabel103
             // 
@@ -3852,6 +3864,7 @@
             this.skinButton27.Tag = "18";
             this.skinButton27.Text = "详情";
             this.skinButton27.UseVisualStyleBackColor = false;
+            this.skinButton27.Click += new System.EventHandler(this.skinButton3_Click);
             // 
             // skinLabel76
             // 
@@ -3940,6 +3953,7 @@
             this.skinButton31.Tag = "17";
             this.skinButton31.Text = "详情";
             this.skinButton31.UseVisualStyleBackColor = false;
+            this.skinButton31.Click += new System.EventHandler(this.skinButton3_Click);
             // 
             // skinLabel88
             // 
@@ -4028,6 +4042,7 @@
             this.skinButton18.Tag = "19";
             this.skinButton18.Text = "详情";
             this.skinButton18.UseVisualStyleBackColor = false;
+            this.skinButton18.Click += new System.EventHandler(this.skinButton3_Click);
             // 
             // skinLabel59
             // 
@@ -4116,6 +4131,7 @@
             this.skinButton26.Tag = "17";
             this.skinButton26.Text = "详情";
             this.skinButton26.UseVisualStyleBackColor = false;
+            this.skinButton26.Click += new System.EventHandler(this.skinButton3_Click);
             // 
             // skinLabel73
             // 
@@ -4204,6 +4220,7 @@
             this.skinButton19.Tag = "18";
             this.skinButton19.Text = "详情";
             this.skinButton19.UseVisualStyleBackColor = false;
+            this.skinButton19.Click += new System.EventHandler(this.skinButton3_Click);
             // 
             // skinLabel67
             // 
@@ -4292,6 +4309,7 @@
             this.skinButton25.Tag = "17";
             this.skinButton25.Text = "详情";
             this.skinButton25.UseVisualStyleBackColor = false;
+            this.skinButton25.Click += new System.EventHandler(this.skinButton3_Click);
             // 
             // skinLabel70
             // 

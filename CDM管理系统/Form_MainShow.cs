@@ -394,13 +394,6 @@ namespace 流量计检定上位机
         Form_FindData formFindData;
         public void 查询数据ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(Form_FindData.Count == 0)
-            {
-                formFindData = new Form_FindData();
-                formFindData.MdiParent = formMain;
-                formFindData.ControlBox = false;
-                formFindData.Show();
-            }
 
         }
 
@@ -486,11 +479,16 @@ namespace 流量计检定上位机
         private void skinButton3_Click(object sender, EventArgs e)
         {
             var btn = sender as CCWin.SkinControl.SkinButton;
-            var tag = Convert.ToInt32(btn.Tag);
-            formMyFindData = new Form_FindData(Stations[tag]);
-            formMyFindData.MdiParent = formMain;
-            formMyFindData.ControlBox = false;
-            formMyFindData.Show();
+            if(btn.Parent is SkinGroupBox parent)
+            {
+                var id = stationGroups.IndexOf(parent);
+                formMyFindData = new Form_FindData(GatherDatas[id],
+                    StationCodes[id],GatherErrors[id]);
+                formMyFindData.MdiParent = formMain;
+                formMyFindData.ControlBox = false;
+                formMyFindData.Show();
+            }
+                  
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -598,6 +596,7 @@ namespace 流量计检定上位机
                     labelError.Text = "故障";
                     labelError.BackColor = Color.Red;
                 }
+
             }
 
         }
