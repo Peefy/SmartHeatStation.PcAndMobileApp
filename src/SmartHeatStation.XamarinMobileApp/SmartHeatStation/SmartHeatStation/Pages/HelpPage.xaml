@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartHeatStation.Pages.HelpPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:duguctrls="clr-namespace:DuGu.XFLib.Controls;assembly=DuGuXFLib"
+    xmlns:my="clr-namespace:SmartHeatStation.Controls"
+    Title="帮助">
+
+    <StackLayout>
+
+        <my:QuestionAndAnswerView TextAnswer="智慧换热站的数据是同步更新，但是查看的数据约有1分钟到一分半的滞后" TextQuestion="智慧换热站查看的数据是否同步更新" />
+
+        <my:QuestionAndAnswerView TextAnswer="可以。但是只能查看当天的数据，在菜单时间设置选项中设置即可" TextQuestion="智慧换热站是否可以随时查看其它时刻的数据" />
+
+        <my:QuestionAndAnswerView TextAnswer="当查看到的数据是蓝色是代表指标正常，黄色代表报警，红色代表故障" TextQuestion="智慧换热站的数据颜色代表什么" />
+
+        <my:QuestionAndAnswerView TextAnswer="N代表没有从服务器接收到数据或者所查看的站没有该项指标" TextQuestion="智慧换热站的数据是N是代表什么" />
+
+        <Frame VerticalOptions="End">
+
+            <Label
+                x:Name="label"
+                FontAttributes="Italic,Bold"
+                HorizontalOptions="Center"
+                Text="Question And Answer"
+                TextColor="Black" />
+
+        </Frame>
+        <duguctrls:ImageEx
+            ColorFilter="Red"
+            HeightRequest="25"
+            HorizontalOptions="Center"
+            Source="tab0.png"
+            WidthRequest="25" />
+    </StackLayout>
+
+</ContentPage>

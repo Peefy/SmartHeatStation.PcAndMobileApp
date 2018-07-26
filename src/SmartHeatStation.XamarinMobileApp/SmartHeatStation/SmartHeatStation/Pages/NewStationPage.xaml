@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartHeatStation.Pages.NewStationPage"
+             xmlns:be="clr-namespace:SmartHeatStation.Behaviours"
+             Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="确定" 
+                     Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        
+        <Label HorizontalOptions="CenterAndExpand" 
+               Text="站名不超过5个汉字,说明不超过12个汉字"
+               HorizontalTextAlignment="Center"
+               Margin="0,10,0,40"/>
+        
+        <StackLayout HorizontalOptions="Fill" 
+                     Orientation="Horizontal"
+                     Margin="20,60,20,0">
+
+            <Label Text="站名：" 
+                   TextColor="Black" 
+                   FontSize="Medium" 
+                   FontAttributes="Bold"
+                   VerticalOptions="Center"/>
+            <Entry TextColor="Black"  
+                   Placeholder="请输入站名" 
+                   Text="{Binding Item.StationName}"
+                   HorizontalOptions="FillAndExpand"
+                   WidthRequest="200"
+                   VerticalOptions="Center">
+
+                <Entry.Behaviors>
+                    <be:MaxLengthTextBehavior MaxLength="5"/>
+                </Entry.Behaviors>
+
+            </Entry>
+
+        </StackLayout>
+
+        <StackLayout HorizontalOptions="Fill" 
+                     VerticalOptions="CenterAndExpand" 
+                     Orientation="Horizontal"
+                     Margin="20,0,20,0">
+
+            <Label Text="说明：" 
+                   TextColor="Black" 
+                   FontSize="Medium" 
+                   FontAttributes="Bold"
+                   VerticalOptions="Center"/>
+            <Entry TextColor="Black"  
+                   Placeholder="请输入说明" 
+                   HorizontalOptions="FillAndExpand"
+                   WidthRequest="200"
+                   VerticalOptions="Center"
+                   Text="{Binding Item.Description}">
+
+                <Entry.Behaviors>
+                    <be:MaxLengthTextBehavior MaxLength="12"/>
+                </Entry.Behaviors>
+                
+            </Entry>
+
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>

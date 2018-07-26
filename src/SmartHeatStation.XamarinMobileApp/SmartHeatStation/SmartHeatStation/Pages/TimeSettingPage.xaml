@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartHeatStation.Pages.TimeSettingPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="{Binding Title}">
+
+    <StackLayout Margin="0,30,0,0">
+
+
+        <Frame>
+            <StackLayout Orientation="Horizontal">
+                <Label
+                    FontSize="Medium"
+                    HorizontalOptions="StartAndExpand"
+                    Text="是否查询今日其他时间"
+                    TextColor="Black" />
+                <Switch
+                    x:Name="switchFindOhterTime"
+                    HorizontalOptions="EndAndExpand"
+                    IsToggled="{Binding IsChecked}"
+                    Toggled="switchFindOhterTime_Toggled" />
+            </StackLayout>
+        </Frame>
+
+        <Frame>
+            <StackLayout Orientation="Horizontal">
+                <Label
+                    FontSize="Medium"
+                    Text="其他时间"
+                    TextColor="Black"
+                    VerticalOptions="Center" />
+                <DatePicker
+                    x:Name="datePicker"
+                    Date="{Binding DateTime}"
+                    HorizontalOptions="CenterAndExpand"
+                    IsEnabled="{Binding IsChecked}"
+                    VerticalOptions="Center"
+                    />
+                <TimePicker
+                    x:Name="timePicker"
+                    HorizontalOptions="CenterAndExpand"
+                    IsEnabled="{Binding IsChecked}"
+                    Time="{Binding TimeSpan}"
+                    VerticalOptions="Center"
+                    />
+
+            </StackLayout>
+        </Frame>
+
+    </StackLayout>
+
+</ContentPage>

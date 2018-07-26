@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartHeatStation.Pages.HomeDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dugu="clr-namespace:DuGu.XFLib.Controls;assembly=DuGuXFLib">
+
+    <dugu:TabView x:Name="tabView" />
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="ToolbarItem_Clicked" Text="搜索" />
+    </ContentPage.ToolbarItems>
+</ContentPage>

@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartHeatStation.Pages.CommunacationSettingPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="{Binding Title}">
+
+    <StackLayout VerticalOptions="CenterAndExpand">
+
+        <StackLayout
+            Margin="20,10,20,0"
+            HorizontalOptions="Fill"
+            Orientation="Horizontal">
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="Medium"
+                Text="读取数据间隔(单位s)："
+                TextColor="Black"
+                VerticalOptions="Center" />
+
+            <Entry
+                x:Name="entryDownLoadInterval"
+                HorizontalOptions="FillAndExpand"
+                Keyboard="Numeric"
+                Placeholder="请输入读取间隔"
+                Text="{Binding DownLoadInterval}"
+                TextColor="Black"
+                VerticalOptions="Center"
+                WidthRequest="200" />
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="Medium"
+                IsVisible="False"
+                Text="IP地址："
+                TextColor="Black"
+                VerticalOptions="Center" />
+
+            <Entry
+                x:Name="entryServerIp"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="False"
+                Placeholder="请输入服务器IP"
+                Text="{Binding IpString}"
+                TextColor="Black"
+                VerticalOptions="Center"
+                WidthRequest="200" />
+
+        </StackLayout>
+
+        <Button
+            Margin="20,0,20,0"
+            BackgroundColor="{StaticResource PrimaryDark}"
+            BorderRadius="5"
+            Command="{Binding ConnectServerCommand}"
+            FontAttributes="Bold"
+            FontSize="Large"
+            HorizontalOptions="Fill"
+            IsVisible="False"
+            Text="连接服务器"
+            TextColor="Black" />
+
+        <Button
+            Margin="20,0,20,0"
+            BackgroundColor="{StaticResource PrimaryDark}"
+            BorderRadius="5"
+            Command="{Binding SendCommand}"
+            FontAttributes="Bold"
+            FontSize="Large"
+            HorizontalOptions="Fill"
+            IsVisible="False"
+            Text="发送数据"
+            TextColor="Black" />
+
+        <Button
+            Margin="20,0,20,0"
+            BackgroundColor="{StaticResource PrimaryDark}"
+            BorderRadius="5"
+            Command="{Binding DownLoadCommand}"
+            FontAttributes="Bold"
+            FontSize="Large"
+            HorizontalOptions="Fill"
+            IsVisible="False"
+            Text="{Binding ReceiveText}"
+            TextColor="Black" />
+
+        <Button
+            Margin="20,0,20,0"
+            BackgroundColor="{StaticResource PrimaryDark}"
+            BorderRadius="5"
+            Clicked="Button_Clicked"
+            FontAttributes="Bold"
+            FontSize="Large"
+            HorizontalOptions="Fill"
+            IsVisible="False"
+            Text="获取时间"
+            TextColor="Black" />
+
+    </StackLayout>
+
+
+</ContentPage>

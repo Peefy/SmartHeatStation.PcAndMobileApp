@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartHeatStation.Pages.SearchPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:binders="clr-namespace:SmartHeatStation.Binders"
+    Title="{Binding Title}">
+    <StackLayout>
+
+        <Entry
+            x:Name="entry"
+            Margin="10,10,10,0"
+            HorizontalOptions="Fill"
+            Placeholder="请输入站名"
+            TextChanged="SearchBar_TextChanged" />
+
+        <ListView
+            x:Name="ItemsListView"
+            binders:ListViewBinder.ItemTappedCommand="{Binding ItemSelectedCommand}"
+            CachingStrategy="RecycleElement"
+            HasUnevenRows="True"
+            IsPullToRefreshEnabled="{Binding IsRefreshEnable}"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            ItemsSource="{Binding Items}"
+            RefreshCommand="{Binding RefreshCommand}"
+            SeparatorVisibility="None"
+            VerticalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10" Orientation="Horizontal">
+
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Large"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{Binding Text}"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>

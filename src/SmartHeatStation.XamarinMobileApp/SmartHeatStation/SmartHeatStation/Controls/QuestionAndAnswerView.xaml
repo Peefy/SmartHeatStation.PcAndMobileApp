@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="SmartHeatStation.Controls.QuestionAndAnswerView">
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Label Text="Q:智慧换热站的..." 
+               Margin="15,0,0,0" 
+               VerticalOptions="Center" 
+               FontSize="{StaticResource LargeSize}"
+               FontAttributes="Bold"
+               TextColor="Red"
+               x:Name="labelQuestion"
+               Grid.Row="0"/>
+
+        <Label Text="A:这个那个这个那个。。" 
+               Margin="15,0,0,0" 
+               VerticalOptions="Center" 
+               FontSize="{StaticResource LargeSize}"
+               FontAttributes="Bold"
+               TextColor="Black"
+               x:Name="labelAnswer"
+               Grid.Row="1"/>
+        
+    </Grid>
+</ContentView>

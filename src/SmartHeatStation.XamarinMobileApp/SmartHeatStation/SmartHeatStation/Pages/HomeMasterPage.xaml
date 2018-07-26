@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartHeatStation.Pages.HomeMasterPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:binders="clr-namespace:SmartHeatStation.Binders"
+    xmlns:ctrls="clr-namespace:AsNum.XFControls;assembly=AsNum.XFControls"
+    xmlns:ffimg="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:helpers="clr-namespace:SmartHeatStation.Helper"
+    xmlns:local="clr-namespace:SmartHeatStation"
+    xmlns:my="clr-namespace:SmartHeatStation.Controls"
+    xmlns:viewModels="clr-namespace:SmartHeatStation.ViewModels"
+    BackgroundColor="{StaticResource Transparent}">
+    <Grid BackgroundColor="{StaticResource Transparent}">
+        <Image
+            x:Name="backgroudImage"
+            Aspect="AspectFill"
+            Source="">
+            <Image.Source>
+                <helpers:OnCustomPlatform
+                    x:TypeArguments="ImageSource"
+                    Android=""
+                    iOS="{local:ResourceImageExtension SmartHeatStation.Resources.menu_bg.png}" />
+            </Image.Source>
+
+        </Image>
+        <ScrollView BackgroundColor="{StaticResource Transparent}">
+            <StackLayout Margin="0,60,0,0" BackgroundColor="{StaticResource Transparent}">
+
+                <StackLayout
+                    Margin="0,0,20,0"
+                    HorizontalOptions="CenterAndExpand"
+                    Orientation="Horizontal"
+                    Spacing="25">
+                    <ffimg:CachedImage
+                        x:Name="ffimg"
+                        Aspect="AspectFill"
+                        HeightRequest="64"
+                        Source="show.png"
+                        VerticalOptions="Center"
+                        WidthRequest="64">
+                        <ffimg:CachedImage.Transformations>
+                            <fftrans:CircleTransformation BorderHexColor="#808080" BorderSize="2" />
+                        </ffimg:CachedImage.Transformations>
+                    </ffimg:CachedImage>
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        Text="个人设置"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+
+                <BoxView
+                    Margin="0,25,0,0"
+                    BackgroundColor="#1976D2"
+                    HeightRequest="2"
+                    HorizontalOptions="Fill" />
+
+                <ListView
+                    x:Name="ItemsListView"
+                    Margin="0,25,10,0"
+                    binders:ListViewBinder.ItemTappedCommand="{Binding ItemSelectedCommand}"
+                    BackgroundColor="{StaticResource Transparent}"
+                    CachingStrategy="RecycleElement"
+                    HorizontalOptions="Center"
+                    IsPullToRefreshEnabled="False"
+                    IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                    ItemsSource="{Binding Items}"
+                    RefreshCommand="{Binding LoadItemsCommand}"
+                    SeparatorVisibility="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                                    <StackLayout.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding IsEnabled, Mode=TwoWay}"
+                                            TargetType="StackLayout"
+                                            Value="False">
+                                            <Setter Property="Opacity" Value="0.6" />
+                                        </DataTrigger>
+                                    </StackLayout.Triggers>
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="22"
+                                        HorizontalOptions="Center"
+                                        Source="{Binding ImageSource}"
+                                        VerticalOptions="Center"
+                                        WidthRequest="22" />
+                                    <Label
+                                        Margin="30,0,0,0"
+                                        FontAttributes="Bold"
+                                        FontSize="Medium"
+                                        HorizontalOptions="Center"
+                                        Text="{Binding Text}"
+                                        TextColor="White"
+                                        VerticalOptions="Center" />
+
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+
+            </StackLayout>
+
+        </ScrollView>
+
+        <StackLayout
+            HorizontalOptions="Fill"
+            Spacing="0"
+            VerticalOptions="End">
+
+            <Button
+                BackgroundColor="#1976D2"
+                Command="{Binding ClearData}"
+                FontSize="Large"
+                HorizontalOptions="Fill"
+                IsVisible="False"
+                Text="清除消息"
+                TextColor="White" />
+
+            <Button
+                BackgroundColor="#1976D2"
+                Command="{Binding Logout}"
+                FontAttributes="Bold"
+                FontSize="Large"
+                HorizontalOptions="Fill"
+                IsVisible="False"
+                Text="退出登录"
+                TextColor="Red" />
+
+        </StackLayout>
+
+
+    </Grid>
+
+</ContentPage>

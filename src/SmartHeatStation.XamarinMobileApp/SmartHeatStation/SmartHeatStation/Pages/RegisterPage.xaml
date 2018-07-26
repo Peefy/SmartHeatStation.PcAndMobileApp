@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartHeatStation.Pages.RegisterPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ctrls="clr-namespace:AsNum.XFControls;assembly=AsNum.XFControls">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+    </ContentPage.Padding>
+
+    <StackLayout Margin="0,0,0,0" VerticalOptions="Fill">
+
+        <ctrls:Border
+            BackgroundColor="#2196F3"
+            HeightRequest="50"
+            HorizontalOptions="Fill"
+            VerticalOptions="Start">
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="Large"
+                HorizontalOptions="Center"
+                Text="智慧换热站"
+                TextColor="White"
+                VerticalOptions="Center" />
+
+        </ctrls:Border>
+
+
+        <StackLayout Margin="0,40,0,0">
+
+            <Image
+                x:Name="image"
+                HeightRequest="64"
+                HorizontalOptions="Center"
+                Source="icon.png"
+                WidthRequest="64" />
+
+            <StackLayout
+                Margin="20,60,20,0"
+                HorizontalOptions="Fill"
+                Orientation="Horizontal">
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="账号："
+                    TextColor="Black"
+                    VerticalOptions="Center" />
+                <Entry
+                    x:Name="entryUserName"
+                    HorizontalOptions="FillAndExpand"
+                    Placeholder="请输入账号"
+                    TextColor="Black"
+                    VerticalOptions="Center"
+                    WidthRequest="200" />
+
+            </StackLayout>
+
+            <StackLayout
+                Margin="20,0,20,0"
+                HorizontalOptions="Fill"
+                Orientation="Horizontal"
+                VerticalOptions="CenterAndExpand">
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="密码："
+                    TextColor="Black"
+                    VerticalOptions="Center" />
+                <Entry
+                    x:Name="entryPassword"
+                    HorizontalOptions="FillAndExpand"
+                    IsPassword="True"
+                    Placeholder="请输入密码"
+                    TextColor="Black"
+                    VerticalOptions="Center"
+                    WidthRequest="200" />
+
+            </StackLayout>
+
+            <Button
+                x:Name="logButton"
+                Margin="18,40,18,0"
+                BackgroundColor="#2196F3"
+                Clicked="Button_Clicked"
+                FontSize="Large"
+                HorizontalOptions="Fill"
+                Text="登 陆"
+                TextColor="Black" />
+
+            <StackLayout
+                Margin="18,0,18,0"
+                HorizontalOptions="Fill"
+                Orientation="Horizontal">
+
+                <Label
+                    FontSize="Small"
+                    HorizontalOptions="StartAndExpand"
+                    Text="注册账号"
+                    TextColor="Teal" />
+
+                <Label
+                    FontSize="Small"
+                    HorizontalOptions="End"
+                    Text="遇到问题"
+                    TextColor="Teal" />
+
+            </StackLayout>
+
+        </StackLayout>
+
+
+
+
+
+    </StackLayout>
+
+
+</ContentPage>

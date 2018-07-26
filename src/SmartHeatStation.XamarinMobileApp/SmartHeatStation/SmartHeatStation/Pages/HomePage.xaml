@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage
+    x:Class="SmartHeatStation.Pages.HomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:SmartHeatStation.Pages"
+    xmlns:viewmodels="clr-namespace:SmartHeatStation.ViewModels">
+
+    <!--<MasterDetailPage.Master>
+        <pages:HomeMasterPage x:Name="masterPage" />
+    </MasterDetailPage.Master>-->
+
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <pages:HomeDetailPage x:Name="DetailPage" Title="大连金州智慧换热站" />
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+
+</MasterDetailPage>

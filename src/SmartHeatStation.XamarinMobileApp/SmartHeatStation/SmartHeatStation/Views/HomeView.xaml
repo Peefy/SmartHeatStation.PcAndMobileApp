@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="SmartHeatStation.Views.HomeView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:binders="clr-namespace:SmartHeatStation.Binders"
+    xmlns:con="clr-namespace:SmartHeatStation.Converters"
+    xmlns:my="clr-namespace:SmartHeatStation.Controls">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <con:StationStatusToColorConverter x:Key="statusToColor" />
+            <con:StationStatusToTextConverter x:Key="statusToText" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <StackLayout x:Name="viewsStack">
+
+        <ListView
+            x:Name="itemsListView"
+            binders:ListViewBinder.ItemTappedCommand="{Binding ItemSelectedCommand}"
+            CachingStrategy="RecycleElement"
+            HasUnevenRows="true"
+            IsPullToRefreshEnabled="true"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            ItemsSource="{Binding Items}"
+            RefreshCommand="{Binding RefreshCommand}"
+            VerticalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <!--<ViewCell.ContextActions>
+                            <MenuItem
+                                Clicked="OnChange"
+                                CommandParameter="{Binding .}"
+                                Text="修改" />
+                            <MenuItem
+                                Clicked="OnDelete"
+                                CommandParameter="{Binding .}"
+                                IsDestructive="True"
+                                Text="删除" />
+                        </ViewCell.ContextActions>-->
+                        <Grid>
+                            <StackLayout Padding="10" Orientation="Horizontal">
+
+                                <Image
+                                    Aspect="Fill"
+                                    HeightRequest="56"
+                                    Source="station_icon.png"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="45" />
+
+                                <StackLayout VerticalOptions="Center">
+
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="Large"
+                                        HorizontalOptions="StartAndExpand"
+                                        HorizontalTextAlignment="Start"
+                                        Text="{Binding StationName}"
+                                        TextColor="Black"
+                                        VerticalOptions="Center" />
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                            FontSize="Medium"
+                                            Text="运行状态:"
+                                            TextColor="Black"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Label
+                                            BackgroundColor="{Binding StationStatus, Converter={StaticResource statusToColor}}"
+                                            FontSize="15"
+                                            HorizontalTextAlignment="Start"
+                                            Text="{Binding StationStatus, Converter={StaticResource statusToText}}"
+                                            TextColor="Black"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Label
+                                            BackgroundColor="Yellow"
+                                            FontSize="15"
+                                            HorizontalTextAlignment="Start"
+                                            IsVisible="{Binding IsAlarm}"
+                                            Text="报警"
+                                            TextColor="Black"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Label
+                                            BackgroundColor="Red"
+                                            FontSize="15"
+                                            HorizontalTextAlignment="Start"
+                                            IsVisible="{Binding IsError}"
+                                            Text="故障"
+                                            TextColor="Black"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </StackLayout>
+
+                                </StackLayout>
+
+                            </StackLayout>
+                            <!--<my:ListViewLoadMoreFooter IsLoadMore="{Binding IsLoadMore}" IsVisible="{Binding IsLast}" />-->
+                        </Grid>
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+
+        </ListView>
+    </StackLayout>
+
+</ContentView>

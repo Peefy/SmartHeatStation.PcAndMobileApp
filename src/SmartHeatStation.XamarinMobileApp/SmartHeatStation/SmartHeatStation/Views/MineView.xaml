@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="SmartHeatStation.Views.MineView"
+             xmlns:ctrls="clr-namespace:SmartHeatStation.Controls"
+             xmlns:con="clr-namespace:SmartHeatStation.Converters">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <con:UserIdToAuthorityConverter x:Key="userToAccount"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <ScrollView  x:Name="scrollView"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                 >
+
+        <Grid VerticalOptions="Fill"
+                     Margin="0,0,0,0"
+              RowSpacing="0">
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="30"/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition Height="30"/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition Height="30"/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+
+
+            <Label Text="" FontSize="Medium" Margin="20,0,0,0" Grid.Row="0" TextColor="Black"
+                   VerticalOptions="Center" FontAttributes="Bold"/>
+
+            <ctrls:SettingChildrenView Grid.Row="1" 
+                                       LabelText="{Binding UserNameId,StringFormat='登陆ID:{0}'}"/>
+            <ctrls:SettingChildrenView Grid.Row="2" 
+                                       LabelText="{Binding LogTime,StringFormat='登陆时间:{0}'}"/>
+            <ctrls:SettingChildrenView Grid.Row="3" 
+                                       LabelText="{Binding UserNameId,StringFormat='登陆权限:{0}',
+                 Converter={StaticResource userToAccount} }"/>
+
+            <Label Text="" FontSize="Medium" Margin="20,0,0,0" Grid.Row="4" TextColor="Black"
+                   VerticalOptions="Center" FontAttributes="Bold"/>
+            <ctrls:SettingChildrenView Grid.Row="5" LabelText="帮助与反馈" ImageSource="mine_help.png"
+                                       x:Name="helpChildrenView"/>
+            <ctrls:SettingChildrenView Grid.Row="6" LabelText="关于智慧换热站" ImageSource="mine_about.png"
+                                       x:Name="aboutChildrenView"/>
+
+            <Label Text="" FontSize="Medium" Margin="20,0,0,0" TextColor="Black" Grid.Row="7"
+                   VerticalOptions="Center" FontAttributes="Bold"
+                 />
+            <Button Text="账 号 信 息" BackgroundColor="#199475" TextColor="Black" Grid.Row="8"
+                    FontAttributes="Bold" HorizontalOptions="Fill" Margin="20,10,20,0"
+                   FontSize="Large"
+                    BorderRadius="5"
+                    Command="{Binding AccountOperation}"/>
+            <Button Text="退 出 登 录" BackgroundColor="#EB3F2F" TextColor="Black" Grid.Row="9"
+                    FontAttributes="Bold" HorizontalOptions="Fill" Margin="20,10,20,0"
+                  FontSize="Large"
+                    BorderRadius="5"
+                    Command="{Binding LogOut}">
+
+            </Button>
+
+        </Grid>
+
+    </ScrollView>
+</ContentView>

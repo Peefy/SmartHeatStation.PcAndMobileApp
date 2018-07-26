@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartHeatStation.Pages.ExceptionPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:binders="clr-namespace:SmartHeatStation.Binders"
+    Title="{Binding Title}">
+
+    <StackLayout>
+
+        <Label
+            Margin="0,10,0,0"
+            FontAttributes="Bold,Italic"
+            FontSize="Large"
+            HorizontalOptions="Center"
+            IsVisible="{Binding IsInitialize}"
+            Text="没有任何异常"
+            TextColor="Red" />
+
+        <ListView
+            x:Name="ItemsListView"
+            binders:ListViewBinder.ItemTappedCommand="{Binding ItemSelectedCommand}"
+            CachingStrategy="RecycleElement"
+            HasUnevenRows="True"
+            IsPullToRefreshEnabled="True"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            ItemsSource="{Binding Items}"
+            RefreshCommand="{Binding RefreshCommand}"
+            SeparatorVisibility="None"
+            VerticalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                Text="{Binding Id}"
+                                TextColor="Black" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                Text="{Binding Text}"
+                                TextColor="Red" />
+
+
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>

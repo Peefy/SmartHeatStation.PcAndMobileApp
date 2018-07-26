@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartHeatStation.Pages.AccountOperationPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ctrls="clr-namespace:AsNum.XFControls;assembly=AsNum.XFControls"
+    xmlns:dugu="clr-namespace:SmartHeatStation.Controls"
+    xmlns:my="clr-namespace:SmartHeatStation.Controls.WithRenderer"
+    xmlns:ns="clr-namespace:NControl.Controls;assembly=NControl.Controls"
+    Title="账号信息">
+    <ScrollView>
+
+        <StackLayout>
+
+            <Label
+                x:Name="labell"
+                FontAttributes="Italic,Bold"
+                FontSize="35"
+                HorizontalOptions="CenterAndExpand"
+                Text="账号操作" />
+
+            <Label
+                FontSize="12"
+                HorizontalTextAlignment="Center"
+                Text="me" />
+
+            <Button
+                Margin="20,0,20,0"
+                BackgroundColor="{StaticResource PrimaryDark}"
+                BorderRadius="10"
+                FontAttributes="Bold"
+                FontSize="Large"
+                HorizontalOptions="Fill"
+                Text="test popup"
+                TextColor="Black" />
+
+            <Button
+                Margin="20,0,20,0"
+                BackgroundColor="{StaticResource PrimaryDark}"
+                BorderRadius="10"
+                FontAttributes="Bold"
+                FontSize="Large"
+                HorizontalOptions="Fill"
+                Text="test popup"
+                TextColor="Black" />
+
+
+            <!--<ctrls:Flip
+                AutoPlay="True"
+                HeightRequest="200"
+                Interval="1400"
+                ItemsSource="{Binding FlipSource}">
+
+                <ctrls:Flip.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Image Aspect="Fill" Source="{Binding Img}" />
+                            <Label
+                                Margin="10"
+                                HorizontalTextAlignment="Start"
+                                Text="{Binding Desc}"
+                                TextColor="Black"
+                                VerticalTextAlignment="End" />
+
+                        </Grid>
+                    </DataTemplate>
+                </ctrls:Flip.ItemTemplate>
+
+            </ctrls:Flip>-->
+
+        </StackLayout>
+
+    </ScrollView>
+
+
+</ContentPage>

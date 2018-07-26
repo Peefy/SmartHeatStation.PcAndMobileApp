@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartHeatStation.Pages.AboutPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ctrls="clr-namespace:DuGu.XFLib.Controls;assembly=DuGuXFLib"
+    Title="{Binding Title}">
+
+    <StackLayout>
+        <ctrls:ImageEx
+            Margin="0,40,0,0"
+            HeightRequest="64"
+            HorizontalOptions="Center"
+            Source="icon.png"
+            WidthRequest="64" />
+
+        <Label
+            FontAttributes="Bold"
+            FontSize="{StaticResource LargeSize}"
+            HorizontalOptions="CenterAndExpand"
+            HorizontalTextAlignment="Center"
+            Text="{Binding Version}"
+            VerticalOptions="StartAndExpand" />
+
+        <Label
+            Margin="0,0,0,30"
+            FontSize="{StaticResource MidMediumSize}"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Text="{Binding Copyright}"
+            VerticalOptions="EndAndExpand" />
+
+    </StackLayout>
+
+</ContentPage>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartHeatStation.Pages.StationDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:binders="clr-namespace:SmartHeatStation.Binders"
+    Title="{Binding Title}">
+    <StackLayout>
+
+        <ListView
+            x:Name="ItemsListView"
+            binders:ListViewBinder.ItemTappedCommand="{Binding ItemSelectedCommand}"
+            CachingStrategy="RecycleElement"
+            HasUnevenRows="true"
+            IsPullToRefreshEnabled="true"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            ItemsSource="{Binding Items}"
+            RefreshCommand="{Binding RefreshCommand}"
+            VerticalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                Text="{Binding ParaName}"
+                                TextColor="Black" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="{Binding ParaValue}"
+                                TextColor="{Binding TextColor}" />
+
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+    </StackLayout>
+
+
+
+
+</ContentPage>

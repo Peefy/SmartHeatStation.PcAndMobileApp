@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="SmartHeatStation.Controls.SettingChildrenView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Frame>
+
+        <Frame.GestureRecognizers>
+
+            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+
+        </Frame.GestureRecognizers>
+
+        <StackLayout Orientation="Horizontal">
+
+            <Image
+                x:Name="image"
+                Aspect="Fill"
+                HeightRequest="20"
+                Source="tab2_off.png"
+                VerticalOptions="Center"
+                WidthRequest="20" />
+
+            <Label
+                x:Name="label"
+                Margin="10,0,0,0"
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="设置"
+                TextColor="Black"
+                VerticalOptions="Center" />
+
+        </StackLayout>
+
+    </Frame>
+</ContentView>
